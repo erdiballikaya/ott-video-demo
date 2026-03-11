@@ -2,14 +2,19 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
-    unoptimized: true  // Add this if you're having image optimization issues
-  },
-  typescript: {
-    ignoreBuildErrors: true  // Use cautiously, only to diagnose build issues
+    unoptimized: true  // Disable image optimization
   },
   webpack: (config) => {
-    config.resolve.fallback = { fs: false, net: false, tls: false };
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': config.resolve.alias['@'] || config.context,
+    };
+    
+    config.module.rules.push({
+      test: /\.(css)$/,
+      use: ['style-loader', 'css-loader', 'postcss-loader']
+    });
+
     return config;
   }
 };
