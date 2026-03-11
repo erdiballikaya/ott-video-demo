@@ -1,7 +1,19 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export default function HomePage() {
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return null
+  }
+
   return (
     <div>
       <section className="relative h-screen flex items-center justify-center text-white">
