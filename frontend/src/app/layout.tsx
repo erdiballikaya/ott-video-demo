@@ -6,13 +6,9 @@ import '../app/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'TOD Studios | Creative Visual Storytelling',
-  description: 'Transforming ideas into compelling visual narratives',
-  openGraph: {
-    title: 'TOD Studios',
-    description: 'Creative visual storytelling and production',
-    type: 'website'
-  }
+  title: 'TOD Studios',
+  description: 'Creative visual storytelling',
+  metadataBase: new URL('https://todstudios.com')
 }
 
 export default function RootLayout({ 
@@ -22,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-white text-black`}>
+      <body className={inter.className}>
         {children}
       </body>
     </html>
