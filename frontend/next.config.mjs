@@ -1,12 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
   reactStrictMode: true,
-  productionBrowserSourceMaps: false,
-  compress: true,
-  poweredByHeader: false,
+  output: 'standalone',
   images: {
-    unoptimized: true
+    unoptimized: false,
+    domains: ['localhost', 'vercel.app']
+  },
+  experimental: {
+    serverActions: true,
+    clientRouterFilter: true
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -18,18 +20,7 @@ const nextConfig = {
       };
     }
     return config;
-  },
-  headers: async () => [
-    {
-      source: '/:path*',
-      headers: [
-        {
-          key: 'Content-Type',
-          value: 'application/javascript; charset=utf-8'
-        }
-      ]
-    }
-  ]
+  }
 };
 
 export default nextConfig;
