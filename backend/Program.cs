@@ -29,15 +29,13 @@ builder.Services.AddSingleton<VideoService>();
 
 var app = builder.Build();
 
-// Swagger Middleware
-if (app.Environment.IsDevelopment())
+// Swagger Middleware - ALWAYS ENABLED
+app.UseSwagger();
+app.UseSwaggerUI(c => 
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c => 
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "OTT Video Demo API v1");
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "OTT Video Demo API v1");
+    c.RoutePrefix = "swagger"; // Ensure this is set
+});
 
 // CORS
 app.UseCors("AllowVercelOrigin");
