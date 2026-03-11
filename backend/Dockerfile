@@ -14,6 +14,7 @@ COPY --from=build /app/publish .
 # Set environment variables
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
 
 # Expose port
 EXPOSE 8080
