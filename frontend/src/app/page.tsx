@@ -1,38 +1,38 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function HomePage() {
   return (
     <div>
-      <section className="relative h-screen flex items-center justify-center text-center text-white">
+      <section className="relative h-screen flex items-center justify-center text-white">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/images/hero-background.jpg" 
             alt="Hero Background" 
             fill 
             priority 
-            className="object-cover"
+            style={{objectFit: 'cover'}}
           />
           <div className="absolute inset-0 bg-black opacity-60"></div>
         </div>
         
-        <div className="relative z-10 max-w-4xl px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Creative Visual Storytelling
           </h1>
-          <p className="text-xl md:text-2xl mb-10 opacity-90">
-            Transforming ideas into powerful visual narratives that inspire and connect.
+          <p className="text-xl md:text-2xl mb-8">
+            Transforming ideas into powerful visual narratives
           </p>
-          <div className="flex justify-center space-x-4">
+          <div className="space-x-4">
             <Link 
               href="/work" 
-              className="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-200 transition-colors"
+              className="inline-block bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200"
             >
               View Our Work
             </Link>
             <Link 
               href="/contact" 
-              className="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition-colors"
+              className="inline-block border border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-black"
             >
               Start a Project
             </Link>
@@ -62,13 +62,14 @@ export default function HomePage() {
               icon: "/icons/strategy.svg"
             }
           ].map((service, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-              <div className="mb-4 w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+            <div key={index} className="text-center p-6 bg-white shadow-md rounded-lg">
+              <div className="mx-auto w-16 h-16 mb-4">
                 <Image 
                   src={service.icon} 
                   alt={`${service.title} icon`} 
-                  width={32} 
-                  height={32} 
+                  width={64} 
+                  height={64} 
+                  className="mx-auto"
                 />
               </div>
               <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
