@@ -1,17 +1,10 @@
 "use client"
-import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/animations.css'
 import '../app/globals.css'
 import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'TOD Studios',
-  description: 'Creative visual storytelling',
-  metadataBase: new URL('https://todstudios.com')
-}
 
 export default function RootLayout({ 
   children 
@@ -30,7 +23,13 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>TOD Studios | Creative Visual Storytelling</title>
+        <meta name="description" content="Creative visual storytelling and production" />
+      </head>
+      <body className={`${inter.className} min-h-screen`}>
         {children}
       </body>
     </html>
