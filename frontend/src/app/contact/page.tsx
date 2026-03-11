@@ -10,9 +10,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Basic form submission logic
     console.log('Form submitted', formData)
-    alert('Thank you for your message!')
+    alert('Message sent!')
   }
 
   return (
@@ -22,7 +21,7 @@ export default function ContactPage() {
       </h1>
       <form 
         onSubmit={handleSubmit} 
-        className="max-w-lg mx-auto space-y-6"
+        className="max-w-md mx-auto space-y-4"
       >
         <div>
           <label htmlFor="name" className="block mb-2">Name</label>
@@ -58,7 +57,7 @@ export default function ContactPage() {
         </div>
         <button 
           type="submit" 
-          className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800"
+          className="w-full bg-black text-white p-3 rounded-lg"
         >
           Send Message
         </button>
