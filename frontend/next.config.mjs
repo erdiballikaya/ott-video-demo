@@ -2,15 +2,34 @@
 const nextConfig = {
   output: 'standalone',
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
+  compress: true,
+  poweredByHeader: false,
   images: {
     unoptimized: true
   },
-  typescript: {
-    ignoreBuildErrors: true
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false
+      };
+    }
+    return config;
   },
-  eslint: {
-    ignoreDuringBuilds: true
-  }
+  headers: async () => [
+    {
+      source: '/:path*',
+      headers: [
+        {
+          key: 'Content-Type',
+          value: 'application/javascript; charset=utf-8'
+        }
+      ]
+    }
+  ]
 };
 
 export default nextConfig;
